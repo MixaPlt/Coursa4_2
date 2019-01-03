@@ -114,9 +114,6 @@ namespace Laba2DB
 
         void confirmClick(object sender, EventArgs e)
         {
-            KypcachDataSetTableAdapters.UserInfoTableAdapter userInfoTableAdapter = new KypcachDataSetTableAdapters.UserInfoTableAdapter();
-            userInfoTableAdapter.Insert(nameBox.Text, passwordBox.Text, Byte.Parse(permissionBox.Text), 0);
-
             SqlConnection conn = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=d:\\Projects\\Laba2DB\\Laba2DB\\Kypcach.mdf;Integrated Security = True");
             conn.Open();
             MessageBox.Show("INSERT INTO [dbo].[UserInfo] (Name, Password, Permission, Expereance) VALUES(" + nameBox.Text.ToString() + ", " + passwordBox.Text + ", " + permissionBox.Text + ", 0)");

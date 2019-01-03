@@ -19,7 +19,7 @@ namespace Laba2DB
     /// </summary>
     public partial class MainWindow : Window
     {
-        public static string connectionString = "Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=d:\\Projects\\Laba2DB\\Laba2DB\\Kypcach.mdf;Integrated Security = True";    
+        public static string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=D:\\Projects\\DBCourse\\Laba2DB\\Kypcach.mdf;Integrated Security = True";    
 
         public MainWindow()
         {

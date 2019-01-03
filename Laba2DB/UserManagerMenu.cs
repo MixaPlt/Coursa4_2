@@ -29,7 +29,7 @@ namespace Laba2DB
             userInfoTableAdapter = new KypcachDataSetTableAdapters.UserInfoTableAdapter();
 
             userInfoGrid = new DataGrid();
-            userInfoGrid.ItemsSource = User.loadUsers();
+            userInfoGrid.ItemsSource = User.loadUsers(MainWindow.connectionString);
             userInfoGrid.Background = Brushes.Gray;
             userInfoGrid.IsReadOnly = true;
             userInfoGrid.MouseDoubleClick += tableDoubleClick;
@@ -49,7 +49,7 @@ namespace Laba2DB
 
         void tableDoubleClick(object sender, EventArgs e)
         {
-            int selectedId = ((KypcachDataSet.UserInfoRow)((DataRowView)userInfoGrid.Items[userInfoGrid.SelectedIndex]).Row).Id;
+            int selectedId = ((User)(userInfoGrid.Items[userInfoGrid.SelectedIndex])).id;
             removeDependence();
             UserProfile userProfile = new UserProfile(mainWindow, mainCanvas, selectedId);
         }
@@ -61,6 +61,7 @@ namespace Laba2DB
             double buttonFontSize = Math.Min(containerHeight / 20, containerWidth / 15);
             Thickness margin = new Thickness();
             userInfoGrid.Height = containerHeight * 0.9;
+            userInfoGrid.Width = containerWidth;
             userInfoGrid.FontSize = 24.5;
 
             margin.Top = containerHeight * 0.9;

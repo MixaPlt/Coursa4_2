@@ -14,8 +14,6 @@ namespace Laba2DB
 {
     class UserProfile
     {
-        KypcachDataSet.UserInfoRow userInfo;
-
         Canvas mainCanvas;
         Window mainWindow;
         Button backButton;
@@ -27,17 +25,18 @@ namespace Laba2DB
 
         TextBox nameBox;
 
-        int userId; 
+        int userId;
 
-        KypcachDataSetTableAdapters.UserInfoTableAdapter userInfoAdapter = new KypcachDataSetTableAdapters.UserInfoTableAdapter();
+        User user;
 
         public UserProfile(Window _mainWindow, Canvas _mainCanvas, int _userId)
         {
+
             mainWindow = _mainWindow;
             mainCanvas = _mainCanvas;
             userId = _userId;
 
-            userInfo = (KypcachDataSet.UserInfoRow)(userInfoAdapter.GetData().Select("Id = " + userId.ToString())[0]);
+            user = User.loadUserById(userId, MainWindow.connectionString);
 
             backButton = new Button() { Content = "Back" };
             mainCanvas.Children.Add(backButton);
@@ -50,10 +49,10 @@ namespace Laba2DB
             nameLabel = new Label() { Content = "Name: ", Foreground = Brushes.DarkOrange };
             mainCanvas.Children.Add(nameLabel);
 
-            levelLabel = new Label() { Content = "Level: " + Math.Floor(Math.Sqrt(userInfo.Expereance)).ToString(), Foreground = Brushes.DarkOrange };
+            levelLabel = new Label() { Content = "Level: " + Math.Floor(Math.Sqrt(user.expereance)).ToString(), Foreground = Brushes.DarkOrange };
             mainCanvas.Children.Add(levelLabel);
 
-            nameBox = new TextBox() { Text = userInfo.Name };
+            nameBox = new TextBox() { Text = user.name };
             mainCanvas.Children.Add(nameBox);
 
             mainWindow.SizeChanged += windowSizeChanged;
@@ -102,11 +101,13 @@ namespace Laba2DB
         void confirmClick(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(MainWindow.connectionString);
+            string queryString = "UPDATE [dbo].[UserInfo] SET Name = '" + nameBox.Text + "' WHERE ID = " + userId + ";";
+            MessageBox.Show(queryString);
             conn.Open();
-            SqlCommand command = new SqlCommand("UPDATE [dbo].[UserInfo] SET Name = '" + nameBox.Text + "' WHERE ID = " + userInfo.Id, conn);
+            SqlCommand command = new SqlCommand(queryString, conn);
             command.ExecuteNonQuery();
             conn.Close();
-            MessageBox.Show("UPDATE [dbo].[UserInfo] SET Name = '" + nameBox.Text + "' WHERE ID = " + userInfo.Id);
+            backClick(null, null);
         }
 
         void removeDependence()
