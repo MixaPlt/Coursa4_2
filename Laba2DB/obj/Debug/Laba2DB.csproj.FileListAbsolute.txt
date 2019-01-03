@@ -1,0 +1,47 @@
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.exe.config
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.pdb
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.csprojResolveAssemblyReference.cache
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\App.g.cs
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_MarkupCompile.cache
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.Properties.Resources.resources
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.csproj.GenerateResource.Cache
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.exe
+c:\users\михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.pdb
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.dll
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.xml
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_Content.g.cs
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\KypcachDataSet.Designer.cs
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\KypcachDataSet.xsc
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\KypcachDataSet.xsd
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\KypcachDataSet.xss
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_MarkupCompile.lref
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.g.resources
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\MainWindow.g.cs
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\obj\Debug\MainWindow.baml
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\KypcachDataSet.cs
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\Kypcach.mdf
+C:\Users\Михаил\documents\visual studio 2015\Projects\Laba2DB\Laba2DB\bin\Debug\Kypcach_log.ldf
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.csprojResolveAssemblyReference.cache
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\MainWindow.g.cs
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\App.g.cs
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_Content.g.cs
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_MarkupCompile.cache
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB_MarkupCompile.lref
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.exe
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.pdb
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.exe.config
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\Kypcach.mdf
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\Kypcach_log.ldf
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.exe
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\Laba2DB.pdb
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.dll
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.SqlServer.dll
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.xml
+d:\Projects\Laba2DB\Laba2DB\bin\Debug\EntityFramework.SqlServer.xml
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\MainWindow.baml
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.g.resources
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.Properties.Resources.resources
+d:\Projects\Laba2DB\Laba2DB\obj\Debug\Laba2DB.csproj.GenerateResource.Cache
