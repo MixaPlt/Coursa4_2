@@ -22,6 +22,7 @@ namespace Laba2DB
         public string name { get; set; }
         public int permission { get; set; }
         public int expereance { get; set; }
+        public string password;
 
         public static List<User> loadUsers(string connectionString)
         {
@@ -66,6 +67,29 @@ namespace Laba2DB
             catch { res = new User(0, "", 0, 0); }
             connection.Close();
             return res;
+        }
+
+        public static List<User> loadUsersByName(string name, string connectionString)
+        {
+            List<User> list = new List<User>();
+            string queryString = "SELECT Id, Name, Password, Permission, Expereance FROM [dbo].[UserInfo] WHERE Name = '" + name + "';";
+            SqlConnection connection = new SqlConnection(connectionString);
+
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryString, connection);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new User(Int32.Parse(reader["id"].ToString()),
+                    reader["Name"].ToString(),
+                    Int32.Parse(reader["Permission"].ToString()),
+                    Int32.Parse(reader["Expereance"].ToString())
+                    ));
+                
+                list[list.Count - 1].password = reader["Password"].ToString();
+            }
+            connection.Close();
+            return list;
         }
     }
 }
