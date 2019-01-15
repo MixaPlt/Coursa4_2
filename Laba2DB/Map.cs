@@ -35,12 +35,12 @@ namespace Laba2DB
                 set { cells[row, column] = value; }
             }
         }
-        string Name { get; set; }
+        public string Name { get; set; }
         int Id { get; set; }
-        int Height { get; set; }
-        int Width { get; set; }
-        int AuthorId { get; set; }
-        string Description { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public int AuthorId { get; set; }
+        public string Description { get; set; }
         public Map(int _id, string connectionString)
         {
             Id = _id;

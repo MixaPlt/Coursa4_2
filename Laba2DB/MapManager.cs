@@ -17,19 +17,20 @@ namespace Laba2DB
         Button backButton;
         Button addNewMapButton;
 
-        KypcachDataSetTableAdapters.MapInfoTableAdapter mapInfoTableAdapter;
-
         DataGrid mapsDataGrid;
+
+        List<Map> maps;
 
         public MapManager(Window _mainWindow, Canvas _mainCanvas)
         {
             mainWindow = _mainWindow;
             mainCanvas = _mainCanvas;
 
-            mapInfoTableAdapter = new KypcachDataSetTableAdapters.MapInfoTableAdapter();
+            maps = Map.readAllMaps(MainWindow.connectionString);
+            MessageBox.Show(maps.Count.ToString());
 
             mapsDataGrid = new DataGrid() { IsReadOnly = true };
-            mapsDataGrid.ItemsSource = mapInfoTableAdapter.GetData();
+            mapsDataGrid.ItemsSource = maps;
             mainCanvas.Children.Add(mapsDataGrid);
             mapsDataGrid.SelectionChanged += mapsDataGridSelectionChanged;
             
@@ -57,6 +58,8 @@ namespace Laba2DB
             double buttonFontSize = Math.Min(containerHeight / 20, containerWidth / 15);
             mapsDataGrid.FontSize = 15.8;
             Thickness margin = new Thickness();
+
+            mapsDataGrid.Width = containerWidth;
 
             margin.Top = containerHeight * 0.9;
             backButton.Margin = margin;
