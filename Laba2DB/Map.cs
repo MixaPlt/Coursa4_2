@@ -65,5 +65,19 @@ namespace Laba2DB
             AuthorId = Int32.Parse(reader["AuthorId"].ToString());
             Description = reader["Description"].ToString();
         }
+        public static List<Map> readAllMaps(string connectionString)
+        {
+            List<Map> res = new List<Map>();
+            string queryString = "SELECT * FROM [dbo].[MapInfo];";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryString, connection);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                res.Add(new Map(reader));
+            }
+            return res;
+        }
     }
 }
