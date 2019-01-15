@@ -27,7 +27,6 @@ namespace Laba2DB
         {
             List<User> list = new List<User>();
             string queryString = "SELECT Id, Name, Permission, Expereance FROM [dbo].[UserInfo]";
-            MessageBox.Show(queryString);
             SqlConnection connection = new SqlConnection(connectionString);
 
             connection.Open();
@@ -49,7 +48,6 @@ namespace Laba2DB
         public static User loadUserById(int id, string connectionString)
         {
             string queryString = "SELECT Id, Name, Permission, Expereance FROM [dbo].[UserInfo] WHERE Id = " + id.ToString() + ";";
-            MessageBox.Show(queryString);
             SqlConnection connection = new SqlConnection(connectionString);
 
             connection.Open();

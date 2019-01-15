@@ -95,6 +95,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>KypcachDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Map.cs" />
     <Compile Include="MapManager.cs" />
     <Compile Include="User.cs" />
     <Compile Include="UserManagerMenu.cs" />

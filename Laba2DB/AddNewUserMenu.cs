@@ -114,9 +114,8 @@ namespace Laba2DB
 
         void confirmClick(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source = (LocalDB)\\MSSQLLocalDB;AttachDbFilename=d:\\Projects\\Laba2DB\\Laba2DB\\Kypcach.mdf;Integrated Security = True");
+            SqlConnection conn = new SqlConnection(MainWindow.connectionString);
             conn.Open();
-            MessageBox.Show("INSERT INTO [dbo].[UserInfo] (Name, Password, Permission, Expereance) VALUES(" + nameBox.Text.ToString() + ", " + passwordBox.Text + ", " + permissionBox.Text + ", 0)");
             SqlCommand command = new SqlCommand("INSERT INTO [dbo].[UserInfo] (Name, Password, Permission, Expereance) VALUES('" + nameBox.Text.ToString() + "', '" + passwordBox.Text + "', " + permissionBox.Text + ", 0)", conn);
             command.ExecuteNonQuery();
             conn.Close();
