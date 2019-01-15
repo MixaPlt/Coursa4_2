@@ -27,12 +27,15 @@ namespace Laba2DB
             mainCanvas = _mainCanvas;
 
             maps = Map.readAllMaps(MainWindow.connectionString);
+            foreach(Map map in maps)
+            {
+                map.loadAuthor(MainWindow.connectionString);
+            }
             MessageBox.Show(maps.Count.ToString());
 
             mapsDataGrid = new DataGrid() { IsReadOnly = true };
             mapsDataGrid.ItemsSource = maps;
             mainCanvas.Children.Add(mapsDataGrid);
-            mapsDataGrid.SelectionChanged += mapsDataGridSelectionChanged;
             
             backButton = new Button() { Content = "Back" };
             mainCanvas.Children.Add(backButton);
@@ -44,11 +47,6 @@ namespace Laba2DB
 
             mainWindow.SizeChanged += windowSizeChanged;
             windowSizeChanged(null, null);
-        }
-
-        void mapsDataGridSelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            
         }
 
         void windowSizeChanged(object sender, EventArgs e)

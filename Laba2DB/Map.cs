@@ -41,6 +41,13 @@ namespace Laba2DB
         public int Width { get; set; }
         public int AuthorId { get; set; }
         public string Description { get; set; }
+        public string AuthorName { get { return Author.name; } }
+        User Author;
+        public void loadAuthor(string connectionString)
+        {
+            Author = User.loadUserById(AuthorId, connectionString);
+        }
+
         public Map(int _id, string connectionString)
         {
             Id = _id;
