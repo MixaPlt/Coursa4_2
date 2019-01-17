@@ -31,12 +31,12 @@ namespace Laba2DB
             {
                 map.loadAuthor(MainWindow.connectionString);
             }
-            MessageBox.Show(maps.Count.ToString());
 
             mapsDataGrid = new DataGrid() { IsReadOnly = true };
             mapsDataGrid.ItemsSource = maps;
             mainCanvas.Children.Add(mapsDataGrid);
-            
+            mapsDataGrid.MouseDoubleClick += tableDoubleClick;
+
             backButton = new Button() { Content = "Back" };
             mainCanvas.Children.Add(backButton);
             backButton.Click += back;
@@ -47,6 +47,13 @@ namespace Laba2DB
 
             mainWindow.SizeChanged += windowSizeChanged;
             windowSizeChanged(null, null);
+        }
+
+        void tableDoubleClick(object sender, EventArgs e)
+        {
+            int selectedId = ((Map)(mapsDataGrid.Items[mapsDataGrid.SelectedIndex])).Id;
+            removeDependence();
+            MapPresentation mapPresentation = new MapPresentation(selectedId, mainWindow, mainCanvas);
         }
 
         void windowSizeChanged(object sender, EventArgs e)

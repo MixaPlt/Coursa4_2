@@ -10,13 +10,13 @@ namespace Laba2DB
 {
     class Map
     {
-        class Field
+        public class Field
         {
             char[,] cells;
             public Field(Map map, string connectionString)
             {
                 cells = new char[map.Height, map.Width];
-                string queryString = "SELECT Value, Row, Column FROM [dbo].[Cells] WHERE MapId = " + map.Id.ToString() + ";";
+                string queryString = "SELECT * FROM [dbo].[Cell] WHERE MapId = " + map.Id.ToString() + ";";
                 SqlConnection connection = new SqlConnection(connectionString);
                 connection.Open();
                 SqlCommand command = new SqlCommand(queryString, connection);
@@ -36,13 +36,20 @@ namespace Laba2DB
             }
         }
         public string Name { get; set; }
-        int Id { get; set; }
+        public int Id { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
         public int AuthorId { get; set; }
         public string Description { get; set; }
         public string AuthorName { get { return Author.name; } }
-        User Author;
+        public User Author;
+        public Field field;
+
+        public void loadField(string connectionString)
+        {
+            field = new Field(this, connectionString);
+        }
+
         public void loadAuthor(string connectionString)
         {
             Author = User.loadUserById(AuthorId, connectionString);

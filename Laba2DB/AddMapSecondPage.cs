@@ -102,8 +102,7 @@ namespace Laba2DB
 
         void confirmClick(object sender, EventArgs e)
         {
-            string queryString = "INSERT INTO [dbo].[MapInfo] (Name, AuthorId, Description, Height, Width) OUTPUT inserted.Id VALUES('" + mapName + "', 1, '" + mapDescription + "', " + mapHeight.ToString() + ", " + mapWidth.ToString() + ");";
-            MessageBox.Show(queryString);
+            string queryString = "INSERT INTO [dbo].[MapInfo] (Name, AuthorId, Description, Height, Width) OUTPUT inserted.Id VALUES('" + mapName + "', "+ MainWindow.authorizedId.ToString() +", '" + mapDescription + "', " + mapHeight.ToString() + ", " + mapWidth.ToString() + ");";
             SqlConnection conn = new SqlConnection(MainWindow.connectionString);
             conn.Open();
             SqlCommand command = new SqlCommand(queryString, conn);
@@ -126,7 +125,6 @@ namespace Laba2DB
                 }
             }
             conn.Close();
-            MessageBox.Show(astring);
             backClick(null, null);
         }
 
