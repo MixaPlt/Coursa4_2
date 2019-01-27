@@ -109,9 +109,6 @@ namespace Laba2DB
             int inserted_id = (int)command.ExecuteScalar();
             
             removeDependence();
-            KypcachDataSetTableAdapters.MapInfoTableAdapter mapInfoAdapter = new KypcachDataSetTableAdapters.MapInfoTableAdapter();
-            KypcachDataSetTableAdapters.CellTableAdapter cellInfoAdapter = new KypcachDataSetTableAdapters.CellTableAdapter();
-            mapInfoAdapter.InsertMap(mapName, 1, mapDescription, mapHeight, mapWidth);
             string astring = "";
             for(int i = 0; i < mapHeight; ++i)
             {
@@ -121,7 +118,6 @@ namespace Laba2DB
                     SqlCommand comm = new SqlCommand(queryString, conn);
                     comm.ExecuteNonQuery();
                     astring += queryString + '\n';
-                    cellInfoAdapter.Insert(field[i, j].Text, i, j, inserted_id);
                 }
             }
             conn.Close();

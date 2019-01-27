@@ -94,7 +94,7 @@ namespace Laba2DB
 
         void submitClick(object sender, EventArgs e)
         {
-            try
+         //   try
             {
                 List<User> users = User.loadUsersByName(loginBox.Text, connectionString);
                 foreach (User user in users)
@@ -114,7 +114,7 @@ namespace Laba2DB
                     MessageBox.Show("Incorrect login or password\nTry again");
                 }
             }
-            catch { MessageBox.Show("Incorrect login or password\nTry again!"); }
+          //  catch { MessageBox.Show("Incorrect login or password\nTry again!"); }
         }
 
         void removeDependencies()

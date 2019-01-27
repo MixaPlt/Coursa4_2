@@ -18,6 +18,7 @@ namespace Laba2DB
         Button backButton;
         Button changeButton;
         Button[,] cells;
+        Button deleteButton;
         public MapPresentation(int _mapId, Window _mainWindow, Canvas _mainCanvas)
         {
             map = new Map(_mapId, MainWindow.connectionString);
@@ -32,7 +33,7 @@ namespace Laba2DB
             {
                 for (int j = 0; j < map.Width; ++j)
                 {
-                    cells[i, j] = new Button() { Content = map.field[i, j] };
+                    cells[i, j] = new Button() { Content = map.field[i, j], Background = Brushes.Azure };
                     mainCanvas.Children.Add(cells[i, j]);
                 }
             }
@@ -40,6 +41,10 @@ namespace Laba2DB
             backButton = new Button() { Content = "Back" };
             mainCanvas.Children.Add(backButton);
             backButton.Click += backClick;
+
+            deleteButton = new Button() { Content = "Delete map", Foreground = Brushes.Red };
+            mainCanvas.Children.Add(deleteButton);
+            deleteButton.Click += deleteClick;
 
             mainWindow.SizeChanged += windowSizeChanged;
             windowSizeChanged(null, null);
@@ -76,6 +81,21 @@ namespace Laba2DB
             backButton.Height = containerHeight / 10;
             backButton.Width = containerWidth / 2;
             backButton.FontSize = buttonFontSize;
+
+            margin.Left = containerWidth / 2;
+            deleteButton.Margin = margin;
+            deleteButton.Height = containerHeight / 10;
+            deleteButton.Width = containerWidth / 2;
+            deleteButton.FontSize = buttonFontSize;
+        }
+
+        void deleteClick(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Are you sure?", "Confirm deltetion", MessageBoxButton.OKCancel) == MessageBoxResult.OK)
+            {
+                Map.deleteById(map.Id, MainWindow.connectionString);
+                backClick(null, null);
+            }
         }
 
         void backClick(object sender, EventArgs e)

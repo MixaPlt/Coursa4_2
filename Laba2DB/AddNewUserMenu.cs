@@ -116,13 +116,13 @@ namespace Laba2DB
         {
             SqlConnection conn = new SqlConnection(MainWindow.connectionString);
             conn.Open();
-            SqlCommand command = new SqlCommand("INSERT INTO [dbo].[UserInfo] (Name, Password, Permission, Expereance) VALUES('" + nameBox.Text.ToString() + "', '" + passwordBox.Text + "', " + permissionBox.Text + ", 0)", conn);
+            SqlCommand command = new SqlCommand("INSERT INTO [dbo].[UserInfo] (Name, Password, Permission, Registration_date, Expereance) VALUES('" + nameBox.Text.ToString() + "', '" + passwordBox.Text + "', " + permissionBox.Text + ", GETDATE(), 0)", conn);
             command.ExecuteNonQuery();
             conn.Close();
 
             back(null, null);
         }
-
+        
         void back(object sender, EventArgs e)
         {
             removeDependence();

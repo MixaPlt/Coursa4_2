@@ -28,6 +28,7 @@ namespace Laba2DB
                     char value = reader["Value"].ToString()[0];
                     cells[row, column] = value;
                 }
+                connection.Close();
             }
             public char this[int row, int column]
             {
@@ -69,7 +70,22 @@ namespace Laba2DB
             Name = reader["Name"].ToString();
             AuthorId = Int32.Parse(reader["AuthorId"].ToString());
             Description = reader["Description"].ToString();
+            connection.Close();
         }
+
+        public static void deleteById(int id, string connectionString)
+        {
+            string queryString = "DELETE FROM [dbo].[Cell] WHERE MapId = " + id.ToString() + ";";
+            SqlConnection connection = new SqlConnection(connectionString);
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryString, connection);
+            command.ExecuteNonQuery();
+            string queryString2 = "DELETE FROM [dbo].[MapInfo] WHERE Id = " + id.ToString() + ";";
+            SqlCommand command2 = new SqlCommand(queryString2, connection);
+            command2.ExecuteNonQuery();
+            connection.Close();
+        }
+
         public Map(SqlDataReader reader)
         {
             Id = Int32.Parse(reader["Id"].ToString());
@@ -91,6 +107,7 @@ namespace Laba2DB
             {
                 res.Add(new Map(reader));
             }
+            connection.Close();
             return res;
         }
     }
