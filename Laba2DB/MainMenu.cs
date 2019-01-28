@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Data.SqlClient;
+using System.IO;
 
 namespace Laba2DB
 {
@@ -14,7 +16,7 @@ namespace Laba2DB
         Window mainWindow;
         Button usersManagerButton;
         Button mapsManagerButton;
-        Button gameSessionManageerButton;
+        Button zvitButton;
 
         public MainMenu(Window _mainWindow, Canvas _mainCanvas)
         {
@@ -29,8 +31,8 @@ namespace Laba2DB
             mainCanvas.Children.Add(mapsManagerButton);
             mapsManagerButton.Click += mapManagerClick;
 
-            gameSessionManageerButton = new Button() { Content = "Manage game sessions" };
-            mainCanvas.Children.Add(gameSessionManageerButton);
+            zvitButton = new Button() { Content = "Today's users" };
+            mainCanvas.Children.Add(zvitButton);
 
             mainWindow.SizeChanged += windowSizeChanged;
             if (mainWindow.IsLoaded)
@@ -61,10 +63,11 @@ namespace Laba2DB
             mapsManagerButton.FontSize = fontSize;
 
             margin.Top += buttonHeight;
-            gameSessionManageerButton.Margin = margin;
-            gameSessionManageerButton.Height = buttonHeight;
-            gameSessionManageerButton.Width = buttonWidth;
-            gameSessionManageerButton.FontSize = fontSize * 0.9;
+            zvitButton.Margin = margin;
+            zvitButton.Height = buttonHeight;
+            zvitButton.Width = buttonWidth;
+            zvitButton.FontSize = fontSize * 0.9;
+            zvitButton.Click += zvitClick;
         }
 
         void userManagerClick(object sender, EventArgs e)
@@ -77,6 +80,36 @@ namespace Laba2DB
         {
             removeDependence();
             MapManager mapManager = new MapManager(mainWindow, mainCanvas);
+        }
+
+        void zvitClick(object sender, EventArgs e)
+        {
+            List<User> list = new List<User>();
+            string queryString = "SELECT * FROM [dbo].[UserInfo] WHERE Registration_date = CONVERT(date, GETDATE());";
+            SqlConnection connection = new SqlConnection(MainWindow.connectionString);
+
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryString, connection);
+            SqlDataReader reader = command.ExecuteReader();
+            while (reader.Read())
+            {
+                list.Add(new User(Int32.Parse(reader["id"].ToString()),
+                    reader["Name"].ToString(),
+                    Int32.Parse(reader["Permission"].ToString()),
+                    Int32.Parse(reader["Expereance"].ToString()),
+                    new Date(reader["Registration_date"].ToString())
+                    ));
+
+                list[list.Count - 1].password = reader["Password"].ToString();
+            }
+            connection.Close();
+            StreamWriter sw = new StreamWriter("report.txt");
+            foreach(User user in list)
+            {
+                sw.WriteLine(user.name.ToString());
+            }
+            sw.Close();
+            MessageBox.Show("Report saved in file report.txt");
         }
 
         void removeDependence()

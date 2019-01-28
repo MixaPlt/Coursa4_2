@@ -101,7 +101,7 @@ namespace Laba2DB
                     new Date(reader["Registration_date"].ToString())
                         );
             }
-            catch { res = new User(0, "", 0, 0, new Date("0.0.0")); }
+            catch { res = new User(0, "", 0, 0, new Date()); }
             connection.Close();
             return res;
         }

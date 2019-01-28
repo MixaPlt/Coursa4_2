@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Data.SqlClient;
 
 namespace Laba2DB
 {
@@ -18,6 +19,7 @@ namespace Laba2DB
         Button addNewMapButton;
 
         DataGrid mapsDataGrid;
+        Label interestingLabel;
 
         List<Map> maps;
 
@@ -45,8 +47,26 @@ namespace Laba2DB
             mainCanvas.Children.Add(addNewMapButton);
             addNewMapButton.Click += addNewMapClick;
 
+            interestingLabel = new Label();
+            mainCanvas.Children.Add(interestingLabel);
+            findBigestMap();
+
             mainWindow.SizeChanged += windowSizeChanged;
             windowSizeChanged(null, null);
+        }
+
+        void findBigestMap()
+        {
+            interestingLabel.Content = "The bigest map is ";
+            string queryString = "SELECT Name FROM [dbo].[MapInfo] WHERE (Height * Width in (SELECT MAX(Height * Width) FROM [dbo].[MapInfo]) )";
+            SqlConnection connection = new SqlConnection(MainWindow.connectionString);
+
+            connection.Open();
+            SqlCommand command = new SqlCommand(queryString, connection);
+            SqlDataReader reader = command.ExecuteReader();
+            reader.Read();
+            interestingLabel.Content += reader["Name"].ToString();
+            connection.Close();
         }
 
         void tableDoubleClick(object sender, EventArgs e)
@@ -65,6 +85,7 @@ namespace Laba2DB
             Thickness margin = new Thickness();
 
             mapsDataGrid.Width = containerWidth;
+            mapsDataGrid.Height = containerHeight * 0.8;
 
             margin.Top = containerHeight * 0.9;
             backButton.Margin = margin;
@@ -77,6 +98,11 @@ namespace Laba2DB
             addNewMapButton.Height = containerHeight / 10;
             addNewMapButton.Width = containerWidth / 2;
             addNewMapButton.FontSize = buttonFontSize;
+
+            margin.Top = containerHeight * 0.8;
+            margin.Left = 0;
+            interestingLabel.Margin = margin;
+            interestingLabel.FontSize = buttonFontSize;
         }
 
         void back(object sender, EventArgs e)
